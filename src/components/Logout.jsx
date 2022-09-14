@@ -5,9 +5,12 @@ const Logout = (props) => {
     const { gestionLogout } = props
     const navegar = useNavigate();
 
-    useEffect(() => {
+    const antino = () => {
         localStorage.removeItem('datosUsuario')
         gestionLogout();
+    }
+    useEffect(() => {
+        antino();
         navegar('/docente/login')
     }, [])
     return (

@@ -14,6 +14,7 @@ import Logout from './components/Logout';
 function App() {
 
   // const [conAcceso, setConAcceso] = useState(null);
+  const [conAcceso, setConAcceso] = useState(datosRecuperar !== null);
   const [datos, setDatos] = useState({});
   // const [token, setToken] = useState();
 
@@ -26,7 +27,6 @@ function App() {
 
   const datosUsuario = localStorage.getItem("DatosUsuario");
   const datosRecuperar = datosUsuario ? JSON.parse(datosUsuario) : null;
-  const [conAcceso, setConAcceso] = useState(datosRecuperar !== null);
 
   const gestionLogout = () => {
     setConAcceso(false)
@@ -67,7 +67,7 @@ function App() {
               <Route path='/cursos' element={<FormNewCurso gestionLogin={gestionLogin} />} />
               <Route path='/modDoc' element={<ModDocent />} />
               <Route path='/logout'
-                element={<Logout />} />
+                element={<Logout props={gestionLogout} />} />
               <Route path='/404' element={<Error />} />
               <Route path='/*' element={<Navigate to='/404' replace />} />
             </Routes>
