@@ -43,6 +43,7 @@ const FormNewCurso = () => {
                 setValue("docente", null)
             )
             .then((response) => {
+                window.location.reload(true)
                 console.log("Todo correcto", response.data);
             })
             .catch((error) => {
