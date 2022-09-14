@@ -1,5 +1,5 @@
 import './App.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate, NavLink } from 'react-router-dom';
 import FormLogin from "./components/FormLogin";
 import FormSingUp from "./components/FormSingUp";
@@ -13,27 +13,35 @@ import Logout from './components/Logout';
 
 function App() {
 
-  const [conAcceso, setConAcceso] = useState(false);
+  // const [conAcceso, setConAcceso] = useState(null);
   const [datos, setDatos] = useState({});
-  const [token, setToken] = useState();
+  // const [token, setToken] = useState();
 
   const gestionLogin = (dato) => {
     setDatos(dato)
     setConAcceso(true);
-    setToken(dato.token)
+    // setToken(dato.token)
     console.log(conAcceso)
   }
+
+  const datosUsuario = localStorage.getItem("DatosUsuario");
+  const datosRecuperar = datosUsuario ? JSON.parse(datosUsuario) : null;
+  const [conAcceso, setConAcceso] = useState(datosRecuperar !== null);
 
   const gestionLogout = () => {
     setConAcceso(false)
   }
+
+  useEffect(() => {
+    setConAcceso(true)
+  }, [])
 
   return (
     <div className="App">
       <Router className='router'>
         <header className='#'>
           <div className='head'>
-            {conAcceso === false ? (
+            {conAcceso === false || conAcceso === null ? (
               <div className='navLinks'>
                 <NavLink className={'navLink'} to='/'>Inicio</NavLink>
                 <NavLink className={'navLink'} to='/docente/login'>Acceso</NavLink>
@@ -46,7 +54,6 @@ function App() {
                 <NavLink className={'navLink'} to='/docentes'>Docentes</NavLink>
                 <NavLink className={'navLink'} to='/modDoc'>Ajustes </NavLink>
                 <NavLink className={'navLink'} to='/logout'>Logout </NavLink>
-
               </div>
             )}
           </div>
@@ -57,10 +64,10 @@ function App() {
                 element={<FormLogin gestionLogin={gestionLogin} />} />
               <Route path='/docentes/' element={<Docente />} />
               <Route path='/docente' element={<FormSingUp />} />
-              <Route path='/cursos' element={<FormNewCurso />} />
+              <Route path='/cursos' element={<FormNewCurso gestionLogin={gestionLogin} />} />
               <Route path='/modDoc' element={<ModDocent />} />
               <Route path='/logout'
-                element={<Logout gestionLogout={gestionLogout} />} />
+                element={<Logout />} />
               <Route path='/404' element={<Error />} />
               <Route path='/*' element={<Navigate to='/404' replace />} />
             </Routes>

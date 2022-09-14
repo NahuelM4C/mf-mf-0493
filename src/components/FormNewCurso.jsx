@@ -9,7 +9,7 @@ import '../App.css'
 
 
 
-const FormNewCurso = () => {
+const FormNewCurso = ({ gestionLogin }) => {
     // const URL= 'https://strong-planet-361708.nw.r.appspot.com/api/cursos'
 
     let navegar = useNavigate();
@@ -43,8 +43,10 @@ const FormNewCurso = () => {
                 setValue("docente", null)
             )
             .then((response) => {
-                window.location.reload(true)
+                gestionLogin(true);
                 console.log("Todo correcto", response.data);
+                window.location.reload();
+                // navegar("/cursos")
             })
             .catch((error) => {
                 console.log(error.response.data);

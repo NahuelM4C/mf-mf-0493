@@ -6,11 +6,10 @@ const Logout = (props) => {
     const navegar = useNavigate();
 
     useEffect(() => {
-        gestionLogout();
         localStorage.removeItem('datosUsuario')
+        gestionLogout();
         navegar('/docente/login')
     }, [])
-
     return (
         <div><h1>Loggin out</h1></div>
     )
