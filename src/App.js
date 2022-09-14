@@ -42,8 +42,8 @@ function App() {
               </div>
             )}
           </div>
-          <div>
-            <Routes className="routes">
+          <div className="routes">
+            <Routes >
               <Route path='/' element={<Inicio gestionLogin={gestionLogin} />} />
               <Route path='/docente/login'
                 element={<FormLogin gestionLogin={gestionLogin} />} />

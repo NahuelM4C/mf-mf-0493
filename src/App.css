@@ -4,7 +4,8 @@
 	text-align: center;
 	background-color: rgb(237, 231, 252);
 	width: 100%;
-	height: max-content;
+	height: 100vh;
+	max-height: max-content;
 	display: flex;
 	justify-content: center;
 	align-items: flex-start;
@@ -41,10 +42,13 @@ body {
 
 }
 
-/* .img-inicio{
-	height: 600px;
-	width: 700px;
-} */
+.routes{
+	background-color: rgb(237, 231, 252);
+	width: 100%;
+	height: 100vh;
+	max-height: max-content;
+}
+
 
 .Form {
 	width: 500px;
@@ -87,6 +91,7 @@ body {
 }
 .botones{
 	display: flex;
+	cursor: pointer;
 	flex-direction: row;
 }
 

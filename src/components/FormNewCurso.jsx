@@ -92,7 +92,7 @@ const FormNewCurso = ({ gestionLogin }) => {
                             'Maximo 16 caracteres'}
 
 
-                        <input type="submit" value="Crear" />
+                        <input className='botones' type="submit" value="Crear" />
                     </form>
                 </div>
 
