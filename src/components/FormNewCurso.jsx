@@ -25,7 +25,7 @@ const FormNewCurso = () => {
 
     const crearCurso = async (data) => {
         await axios
-            .post(process.env.REACT_APP_BACKEND_URL,
+            .post(`${process.env.REACT_APP_BACKEND_URL}/cursos`,
                 {
                     nombre: data.nombre,
                     horas: data.horas,
