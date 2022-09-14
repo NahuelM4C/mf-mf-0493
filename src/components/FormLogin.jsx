@@ -22,7 +22,7 @@ const FormLogin = (props) => {
             console.log(emailLogin);
             console.log(passwordLogin);
             // await axios.post(URL+"/login"),{
-            await axios.post(`${process.env.REACT_APP_BACKEND_URL}/login`, {
+            await axios.post(`${process.env.REACT_APP_BACKEND_URL}/docente/login`, {
                 email: emailLogin,
                 password: passwordLogin
             }).then((respuesta) => {
