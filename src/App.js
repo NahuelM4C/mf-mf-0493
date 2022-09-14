@@ -13,28 +13,14 @@ import Logout from './components/Logout';
 
 function App() {
 
-  // const [conAcceso, setConAcceso] = useState(null);
   const datosUsuario = localStorage.getItem("DatosUsuario");
   const datosRecuperar = datosUsuario ? JSON.parse(datosUsuario) : null;
   const [conAcceso, setConAcceso] = useState(datosRecuperar !== null);
-  // const [datos, setDatos] = useState({});
-  // const [token, setToken] = useState();
 
   const gestionLogin = (dato) => {
-    // setDatos(dato)
     setConAcceso(dato);
-    // setToken(dato.token)
     console.log(conAcceso)
   }
-
-
-  // const gestionLogout = () => {
-  //   setConAcceso(false)
-  // }
-
-  // useEffect(() => {
-  //   setConAcceso(true)
-  // }, [])
 
   return (
     <div className="App">
@@ -52,20 +38,19 @@ function App() {
                 <NavLink className={'navLink'} to='/'>Inicio</NavLink>
                 <NavLink className={'navLink'} to='/cursos'>Cursos</NavLink>
                 <NavLink className={'navLink'} to='/docentes'>Docentes</NavLink>
-                <NavLink className={'navLink'} to='/modDoc'>Ajustes </NavLink>
                 <NavLink className={'navLink'} to='/logout'>Logout </NavLink>
               </div>
             )}
           </div>
           <div>
             <Routes className="routes">
-              <Route path='/' element={<Inicio />} />
+              <Route path='/' element={<Inicio gestionLogin={gestionLogin} />} />
               <Route path='/docente/login'
                 element={<FormLogin gestionLogin={gestionLogin} />} />
-              <Route path='/docentes/' element={<Docente />} />
+              <Route path='/docentes/' element={<Docente gestionLogin={gestionLogin} />} />
               <Route path='/docente' element={<FormSingUp />} />
               <Route path='/cursos' element={<FormNewCurso gestionLogin={gestionLogin} />} />
-              <Route path='/modDoc' element={<ModDocent />} />
+              {/* <Route path='/modDoc' element={<ModDocent gestionLogin={gestionLogin} />} /> */}
               <Route path='/logout'
                 element={<Logout gestionLogin={gestionLogin} />} />
               <Route path='/404' element={<Error />} />

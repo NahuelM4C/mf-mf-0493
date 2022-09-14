@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios'
 
 
-const ListarCurso = ({ curso }) => {
+const ListarCurso = ({ curso, gestionLogin }) => {
     // URL = 'https://strong-planet-361708.nw.r.appspot.com/api/cursos'
     URL = 'http://localhost:3000/api/cursos/'
     console.log(curso);
@@ -49,6 +49,8 @@ const ListarCurso = ({ curso }) => {
             .then((response) => {
                 console.log("Todo correcto", response.data);
                 window.location.reload(true)
+                gestionLogin(true)
+
             })
             .catch((error) => {
                 console.log(error.response.data);
@@ -75,7 +77,10 @@ const ListarCurso = ({ curso }) => {
                                     Authorization: "Bearer " + extraerDatosUsuario()[0],
                                 }
                             })
-                                .then((response) => { window.location.reload(true) })
+                                .then((response) => {
+                                    window.location.reload(true);
+                                    gestionLogin(true)
+                                })
                                 .catch((error) => {
                                     console.log(error.response.data);
                                 })

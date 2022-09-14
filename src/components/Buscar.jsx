@@ -4,7 +4,6 @@ import Tabla from '../components/Tabla';
 import '../Buscar.css';
 
 const Buscar = () => {
-	// URL = 'https://strong-planet-361708.nw.r.appspot.com/api'
 	const [query, setQuery] = useState('');
 	const [datos, setDatos] = useState([]);
 
@@ -20,7 +19,6 @@ const Buscar = () => {
 	useEffect(() => {
 		const recupera = async () => {
 			if (query.length === 0) {
-				// const res = await axios.get(URL + "/cursos")
 				const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/cursos`);
 				setDatos(res.data.cursos);
 			} else {

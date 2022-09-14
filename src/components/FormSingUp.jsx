@@ -5,8 +5,6 @@ import { useNavigate } from 'react-router-dom';
 
 const FormSingUp = () => {
   const navegar = useNavigate();
-  // const URL = 'https://strong-planet-361708.nw.r.appspot.com/api/docente'
-
   const { register, handleSubmit, setValue, formState: { errors } } = useForm();
 
   const singUpForm = async (data) => {
