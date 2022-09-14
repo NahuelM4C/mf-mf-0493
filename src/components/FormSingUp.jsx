@@ -5,12 +5,13 @@ import { useNavigate } from 'react-router-dom';
 
 const FormSingUp = () => {
   const navegar = useNavigate();
-  const URL = 'http://localhost:3000/api/docente/'
+  // const URL = 'https://strong-planet-361708.nw.r.appspot.com/api/docente'
+
   const { register, handleSubmit, setValue, formState: { errors } } = useForm();
 
   const singUpForm = async (data) => {
     try {
-      const response = await axios.post(URL, data);
+      const response = await axios.post(process.env.REACT_APP_BACKEND_URL + "/docente", data);
       setValue('nombre', null);
       setValue('email', null);
       setValue('password', null);

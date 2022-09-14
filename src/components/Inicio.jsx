@@ -10,7 +10,9 @@ const Inicio = () => {
         <div>
 
             <h1> Inicio </h1>
+            <div className='img-inicio'>
 
+            </div>
 
         </div>
     )

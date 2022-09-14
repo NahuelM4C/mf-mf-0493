@@ -11,7 +11,6 @@ const ListarDocente = ({ docente }) => {
     //     }
     // };
     const resultado = docente.cursos.map((dato) => {
-        // console.log(dato)
         return dato.nombre  //! PELIGRO NO TOCAR
     })
     console.log(resultado)

@@ -12,7 +12,7 @@ const FormLogin = (props) => {
     const { gestionLogin } = props;
 
 
-    const URL = 'http://localhost:3000/api/docente/login'
+    // const URL = 'http://localhost:3000/api/docente/login'
     const [emailLogin, setEmailLogin] = useState('');
     const [passwordLogin, setPasswordLogin] = useState('');
 
@@ -21,7 +21,8 @@ const FormLogin = (props) => {
         try {
             console.log(emailLogin);
             console.log(passwordLogin);
-            await axios.post(URL, {
+            // await axios.post(URL+"/login"),{
+            await axios.post(`${process.env.REACT_APP_BACKEND_URL}/login`, {
                 email: emailLogin,
                 password: passwordLogin
             }).then((respuesta) => {

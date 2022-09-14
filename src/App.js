@@ -1,20 +1,20 @@
 import './App.css';
 import { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes, Navigate, NavLink } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes, Navigate, NavLink } from 'react-router-dom';
 import FormLogin from "./components/FormLogin";
 import FormSingUp from "./components/FormSingUp";
-import Docente from "./components/Docente"
-import Cursos from "./components/Cursos"
-import Inicio from "./components/Inicio"
-import Error from "./components/Error"
+import Docente from "./components/Docente";
+import Inicio from "./components/Inicio";
+import Error from "./components/Error";
 import FormNewCurso from './components/FormNewCurso';
-import Logout from './components/Logout'
+import ModDocent from './components/ModDocent';
+import Logout from './components/Logout';
+
 
 function App() {
 
   const [conAcceso, setConAcceso] = useState(false);
   const [datos, setDatos] = useState({});
-  // const [datoLogout, setDatoLogout] = useState({});
   const [token, setToken] = useState();
 
   const gestionLogin = (dato) => {
@@ -44,7 +44,9 @@ function App() {
                 <NavLink className={'navLink'} to='/'>Inicio</NavLink>
                 <NavLink className={'navLink'} to='/cursos'>Cursos</NavLink>
                 <NavLink className={'navLink'} to='/docentes'>Docentes</NavLink>
+                <NavLink className={'navLink'} to='/modDoc'>Ajustes </NavLink>
                 <NavLink className={'navLink'} to='/logout'>Logout </NavLink>
+
               </div>
             )}
           </div>
@@ -56,7 +58,7 @@ function App() {
               <Route path='/docentes/' element={<Docente />} />
               <Route path='/docente' element={<FormSingUp />} />
               <Route path='/cursos' element={<FormNewCurso />} />
-              {/* <Route path='/cursos' element={<Cursos />} /> */}
+              <Route path='/modDoc' element={<ModDocent />} />
               <Route path='/logout'
                 element={<Logout gestionLogout={gestionLogout} />} />
               <Route path='/404' element={<Error />} />

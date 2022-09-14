@@ -3,13 +3,13 @@ import axios from 'axios';
 import { useEffect } from 'react';
 import ListarCurso from './ListarCurso';
 
-
-
 const Cursos = () => {
+    // URL= 'https://strong-planet-361708.nw.r.appspot.com/api'
     const [cursos, setCursos] = useState([]);
     const getCursos = async () => {
         try {
-            const respuesta = await axios.get('http://localhost:3000/api/cursos')
+            // const respuesta = await axios.get (URL + "/cursos")
+            const respuesta = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/cursos`)
             setCursos(respuesta.data.cursos)
             return respuesta.data.cursos
         } catch (error) { console.log(error) }

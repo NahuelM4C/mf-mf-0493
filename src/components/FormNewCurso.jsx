@@ -11,7 +11,7 @@ import '../App.css'
 
 const FormNewCurso = () => {
     // const URL= 'https://strong-planet-361708.nw.r.appspot.com/api/cursos'
-    const URL = 'http://localhost:3000/api/cursos/'
+
     let navegar = useNavigate();
     const { register, handleSubmit, setValue, formState: { errors } } = useForm();
 
@@ -25,8 +25,7 @@ const FormNewCurso = () => {
 
     const crearCurso = async (data) => {
         await axios
-            .post(
-                URL,
+            .post(process.env.REACT_APP_BACKEND_URL,
                 {
                     nombre: data.nombre,
                     horas: data.horas,

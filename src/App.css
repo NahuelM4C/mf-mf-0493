@@ -18,6 +18,7 @@ body {
 
 .head{
 	display: flex;
+	width: 100%;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
@@ -25,22 +26,25 @@ body {
 
 .navLinks{
 	margin-top: 1%;
+	margin-bottom: 5%;
     width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
 	font-family: 'Roboto', sans-serif;
-	font-size: 1.2em;
-
-	
+	font-size: 1.2em;	
 }
+
 .navLinks a{
 	text-decoration: none ;
 	color: rgb(0, 0, 0);
 
 }
 
-
+/* .img-inicio{
+	height: 600px;
+	width: 700px;
+} */
 
 .Form {
 	width: 500px;
