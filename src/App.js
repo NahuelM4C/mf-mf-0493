@@ -44,10 +44,9 @@ function App() {
                 <NavLink className={'navLink'} to='/'>Inicio</NavLink>
                 <NavLink className={'navLink'} to='/cursos'>Cursos</NavLink>
                 <NavLink className={'navLink'} to='/docentes'>Docentes</NavLink>
-                <NavLink className={'navLink'} to='/logout'>Logout</NavLink>
+                <NavLink className={'navLink'} to='/logout'>Logout </NavLink>
               </div>
-            )
-            }
+            )}
           </div>
           <div>
             <Routes className="routes">

@@ -4,7 +4,7 @@
 	text-align: center;
 	background-color: rgb(237, 231, 252);
 	width: 100%;
-	height: 100vh;
+	height: max-content;
 	display: flex;
 	justify-content: center;
 	align-items: flex-start;
@@ -40,9 +40,7 @@ body {
 
 }
 
-.routes{
-  margin-top: 30%;
-}
+
 
 .Form {
 	width: 500px;
@@ -56,18 +54,81 @@ body {
   	margin-top: 30%;
 }
 
-.Form .title {
+.Form-curso{
+	width: 470px;
+	height: max-content;
+	background-color: rgb(192, 183, 200);
+	border-radius: 10px;
+	display: flex;
+	flex-direction: column;
+	margin-top: 5%;
+	margin-right: 3%;
+	margin-left: 3%;
+	
+}
+
+.div-cursos{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.form-newcurso{
+	width: 400px;
+	height: 36vh;
+	background-color: rgba(182, 186, 255, 0.994);
+	display: flex;
+	flex-direction:column;
+	margin-top: 5%;
+}
+.botones{
+	display: flex;
+	flex-direction: row;
+}
+
+.title {
 	color: white;
 	flex: 20%;
 	width: 100%;
-	display: grid;
-	place-items: center;
-	font-size: 35px;
+	font-size: 1.6em;
+} 
+
+.btn-delete{
+	
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: rgb(255, 133, 133);
+	width: 50%;
+	cursor: pointer;
 }
 
-.Form .inputs {
+.btn-mod{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: rgb(182, 215, 255);
+	width: 50%;
+	cursor: pointer;
+}
+
+
+.div-pintacurso{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+}
+
+div-buscar{
+	margin-top: 20px;
+}
+
+.inputs {
 	flex: 80%;
 	width: 100%;
+	height: 50%;
 }
 
 .inputs input {
@@ -81,7 +142,7 @@ body {
 }
 
 .inputs button {
-	width: 150px;
+	width: 120px;
 	height: 40px;
 	font-size: 20px;
 	border-radius: 6px;
@@ -90,9 +151,6 @@ body {
 	margin-top: 20px;
 }
 
-.inputs button :hover {
-background-color: rgb(224, 255, 193);
-}
 
 .inputs #submit {
 	cursor: pointer;
@@ -105,6 +163,7 @@ background-color: rgb(224, 255, 193);
 }
 
 h1{
+	height: 100vh;
 	width: 480px;
 
 }

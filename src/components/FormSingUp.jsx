@@ -1,9 +1,10 @@
 import React from 'react';
 import axios from 'axios';
-// import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 
 const FormSingUp = () => {
+  const navegar = useNavigate();
   const URL = 'http://localhost:3000/api/docente/'
   const { register, handleSubmit, setValue, formState: { errors } } = useForm();
 
@@ -14,6 +15,7 @@ const FormSingUp = () => {
       setValue('email', null);
       setValue('password', null);
       return console.log(response)
+
     } catch (error) { console.log(error) }
   }
 
@@ -60,6 +62,7 @@ const FormSingUp = () => {
             'Maximo 16 caracteres'}
 
           <input type="submit" />
+
         </form>
       </div>
     </div>

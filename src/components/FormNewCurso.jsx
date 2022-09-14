@@ -3,6 +3,10 @@ import axios from 'axios';
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 import Cursos from './Cursos';
+import Buscar from './Buscar'
+import '../App.css'
+
+
 
 
 const FormNewCurso = () => {
@@ -19,9 +23,7 @@ const FormNewCurso = () => {
         }
     };
 
-
     const crearCurso = async (data) => {
-
         await axios
             .post(
                 URL,
@@ -49,82 +51,61 @@ const FormNewCurso = () => {
             });
     };
 
-    // const crearCurso = async (data) => {
-    //     await axios
-    //         .post(
-    //             URL,
-    //             {
-    //                 nombre: data.nombre,
-    //                 horas: data.horas,
-    //                 precio: data.precio,
-    //                 docente: extraerDatosUsuario()[1],
-    //             },
-    //             {
-    // headers: {
-    //     Authorization: "Bearer " + extraerDatosUsuario()[0], // En los headers van 'Bearer ' + token recibido
-    //                 },
-    //             },
-    // setValue("nombre", null),
-    //     setValue("horas", null),
-    //     setValue("precio", null),
-    //     setValue("docente", null)
-    //         )
-    //         .then((response) => {
-    //             console.log("Todo correcto", response.data);
-    //         })
-    //         .catch((error) => {
-    //             console.log(error.response.data);
-    //         });
-    // };
-
     return (
+        <div className='div-cursos'>
+            <div className='form-newcurso'>
+                <div className='title' >Nuevo Curso</div>
+                <div className='inputs'>
+                    <form onSubmit={handleSubmit(crearCurso)}>
+                        <input type="text"
+                            name='nombre'
+                            placeholder="nombre"
+                            {...register("nombre",
+                                { required: true, maxLength: 70 })}
+                        />
+                        {errors.nombre &&
+                            errors.nombre.type === 'required' &&
+                            'Campo nombre requerido'}
+                        {errors.curso &&
+                            errors.curso.type === 'maxLength' &&
+                            'Máximo 30 caracteres'}
+                        <input type="text"
+                            name='horas'
+                            placeholder='horas'
+                            {...register("horas",
+                                { required: true, maxLength: 30 })}
+                        />
+                        {errors.horas &&
+                            errors.horas.type === 'required' &&
+                            'Campo horas requerido'}
+                        {errors.horas &&
+                            errors.horas.type === 'maxLength' &&
+                            'Máximo 30 caracteres'}
+                        <input type="text"
+                            name='precio'
+                            placeholder='Precio'
+                            {...register("precio",
+                                { required: true, maxLength: 16 })}
+                        />
+                        {errors.precio &&
+                            errors.precio.type === 'required' &&
+                            'Campo contraseña requerido'}
+                        {errors.precio &&
+                            errors.precio.type === 'maxLength' &&
+                            'Maximo 16 caracteres'}
 
-        <div className='Form'>
-            <div className='title' >Nuevo Curso</div>
-            <div className='inputs'>
-                <form onSubmit={handleSubmit(crearCurso)}>
-                    <input type="text"
-                        name='nombre'
-                        placeholder="nombre"
-                        {...register("nombre",
-                            { required: true, maxLength: 70 })}
-                    />
-                    {errors.nombre &&
-                        errors.nombre.type === 'required' &&
-                        'Campo nombre requerido'}
-                    {errors.curso &&
-                        errors.curso.type === 'maxLength' &&
-                        'Máximo 30 caracteres'}
-                    <input type="text"
-                        name='horas'
-                        placeholder='horas'
-                        {...register("horas",
-                            { required: true, maxLength: 30 })}
-                    />
-                    {errors.horas &&
-                        errors.horas.type === 'required' &&
-                        'Campo horas requerido'}
-                    {errors.horas &&
-                        errors.horas.type === 'maxLength' &&
-                        'Máximo 30 caracteres'}
-                    <input type="text"
-                        name='precio'
-                        placeholder='Precio'
-                        {...register("precio",
-                            { required: true, maxLength: 16 })}
-                    />
-                    {errors.precio &&
-                        errors.precio.type === 'required' &&
-                        'Campo contraseña requerido'}
-                    {errors.precio &&
-                        errors.precio.type === 'maxLength' &&
-                        'Maximo 16 caracteres'}
 
+                        <input type="submit" value="Crear" />
+                    </form>
+                </div>
 
-                    <input type="submit" value="Modificar" id="submit" />
-                </form>
             </div>
-            <Cursos />
+            <div className='div-buscar' >
+                <Buscar />
+            </div>
+            <div className='div-pintacurso'>
+                <Cursos />
+            </div>
         </div>
 
     )

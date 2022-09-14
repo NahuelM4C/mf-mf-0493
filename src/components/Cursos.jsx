@@ -20,7 +20,7 @@ const Cursos = () => {
 
 
     return (
-        <div>
+        <div className='div-pintacurso'>
             {cursos.map((curso) => {
                 return <ListarCurso key={curso._id} curso={curso} />
             })}
