@@ -9,13 +9,26 @@ const FormSingUp = () => {
 
   const singUpForm = async (data) => {
     try {
-      const response = await axios.post(process.env.REACT_APP_BACKEND_URL + "/docente", data);
-      setValue('nombre', null);
-      setValue('email', null);
-      setValue('password', null);
-      return console.log(response)
-
+      const response = await axios.post(process.env.REACT_APP_BACKEND_URL + "/docente", {
+        nombre: data.nombre,
+        email: data.email,
+        password: data.password
+      }).then((respuesta) => {
+        console.log(respuesta.data);
+        localStorage.setItem(
+          //*Key:value
+          'datosUsuario',
+          JSON.stringify({
+            userId: respuesta.data.userId,
+            token: respuesta.data.token,
+          })
+        );
+      })
+      navegar("/cursos")
     } catch (error) { console.log(error) }
+    setValue('nombre', null);
+    setValue('email', null);
+    setValue('password', null);
   }
 
   return (
