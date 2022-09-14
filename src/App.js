@@ -14,27 +14,27 @@ import Logout from './components/Logout';
 function App() {
 
   // const [conAcceso, setConAcceso] = useState(null);
+  const datosUsuario = localStorage.getItem("DatosUsuario");
+  const datosRecuperar = datosUsuario ? JSON.parse(datosUsuario) : null;
   const [conAcceso, setConAcceso] = useState(datosRecuperar !== null);
-  const [datos, setDatos] = useState({});
+  // const [datos, setDatos] = useState({});
   // const [token, setToken] = useState();
 
   const gestionLogin = (dato) => {
-    setDatos(dato)
-    setConAcceso(true);
+    // setDatos(dato)
+    setConAcceso(dato);
     // setToken(dato.token)
     console.log(conAcceso)
   }
 
-  const datosUsuario = localStorage.getItem("DatosUsuario");
-  const datosRecuperar = datosUsuario ? JSON.parse(datosUsuario) : null;
 
-  const gestionLogout = () => {
-    setConAcceso(false)
-  }
+  // const gestionLogout = () => {
+  //   setConAcceso(false)
+  // }
 
-  useEffect(() => {
-    setConAcceso(true)
-  }, [])
+  // useEffect(() => {
+  //   setConAcceso(true)
+  // }, [])
 
   return (
     <div className="App">
@@ -67,7 +67,7 @@ function App() {
               <Route path='/cursos' element={<FormNewCurso gestionLogin={gestionLogin} />} />
               <Route path='/modDoc' element={<ModDocent />} />
               <Route path='/logout'
-                element={<Logout props={gestionLogout} />} />
+                element={<Logout gestionLogin={gestionLogin} />} />
               <Route path='/404' element={<Error />} />
               <Route path='/*' element={<Navigate to='/404' replace />} />
             </Routes>

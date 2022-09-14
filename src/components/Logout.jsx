@@ -1,13 +1,12 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'
 
-const Logout = (props) => {
-    const { gestionLogout } = props
+const Logout = ({ gestionLogin }) => {
     const navegar = useNavigate();
 
     const antino = () => {
         localStorage.removeItem('datosUsuario')
-        gestionLogout();
+        gestionLogin(false);
     }
     useEffect(() => {
         antino();

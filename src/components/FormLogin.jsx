@@ -35,7 +35,7 @@ const FormLogin = (props) => {
                         token: respuesta.data.token,
                     })
                 );
-                gestionLogin(respuesta.data);
+                gestionLogin(true);
                 navegar('/')
             }).catch((error) => { console.log(error) })
         } catch (error) {
